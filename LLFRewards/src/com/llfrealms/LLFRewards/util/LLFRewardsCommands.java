@@ -30,10 +30,11 @@ public class LLFRewardsCommands implements CommandExecutor
 	    }
 		if(cmd.getName().equalsIgnoreCase("llfadd"))
 	    {
-			plugin.reloadConfig();
-			plugin.connect(); //connect to database
-	        plugin.tableCheck(); //check to make sure our table exists and if not creates it.
-        	sender.sendMessage("Config reloaded");
+			///<command> {name} {powerlevel} {commands} {requirements yes/no} {req1} {req2} {req3} {req4}
+			String reward = args[0];
+			String plvl = args[1];
+			String commands = args[2];
+			String req = args[3];
         	return true;
 	    }
         return false;
