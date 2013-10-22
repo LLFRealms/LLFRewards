@@ -1,18 +1,43 @@
 name: LLFRewards
+author: L337Lobster
 main: com.llfrealms.LLFRewards.LLFRewards
+database: true
+depend: [mcMMO]
 version: 1.5
 
 commands:
     llfsave:
        description: save config.
+       aliases: ls
+       permission: llf.save
+       permission-message: You do not have permission for this command
        usage: /<command>
     llfload:
        description: reload config.
+       aliases: ll
+       permission: llf.load
+       permission-message: You do not have permission for this command
        usage: /<command>
     llfadd:
        description: add rewards to the config.
+       aliases: la
+       permission: llf.add
+       permission-message: You do not have permission for this command
        usage: /<command> {rewardName} {powerlevel} r:{requirements yes/no} r1:{req1} r2:{req2} r3:{req3} r4:{req4} {commands}
 permissions:
-    jack.message:
-        description: message!
+    llf.*:
+        description: Allows the user to save, reload, and add to the config
+        default: op
+        children:
+            llf.add: true
+            llf.save: true
+            llf.load: true
+    llf.add:
+        description: Allows the user to add to the config file
+        default: false
+    llf.save:
+        description: Allows the user to save the config file
+        default: false
+    llf.load:
+        description: Allows the user to reload the config file
         default: false

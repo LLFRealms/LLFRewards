@@ -15,19 +15,19 @@ public class LLFRewardsCommands implements CommandExecutor
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) 
 	{
-		if(cmd.getName().equalsIgnoreCase("llfsave"))
+		if(cmd.getName().equalsIgnoreCase("llfsave") && sender.hasPermission("llf.save"))
 	    {
 			plugin.saveConfig();
         	sender.sendMessage("Config saved");
         	return true;
 	    }
-		if(cmd.getName().equalsIgnoreCase("llfload"))
+		if(cmd.getName().equalsIgnoreCase("llfload")  && sender.hasPermission("llf.load"))
 	    {
 			plugin.reloadConfig();
         	sender.sendMessage("Config reloaded");
         	return true;
 	    }
-		if(cmd.getName().equalsIgnoreCase("llfadd"))
+		if(cmd.getName().equalsIgnoreCase("llfadd") && sender.hasPermission("llf.add"))
 	    {
 			// /<command> {rewardName} {powerlevel} r:{requirements yes/no} r1:{req1} r2:{req2} r3:{req3} r4:{req4} {commands}
 			if(args.length > 0)
