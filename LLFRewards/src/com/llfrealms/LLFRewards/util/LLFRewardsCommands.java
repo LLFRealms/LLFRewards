@@ -30,7 +30,7 @@ public class LLFRewardsCommands implements CommandExecutor
 		if(cmd.getName().equalsIgnoreCase("llfadd") && sender.hasPermission("llf.add"))
 	    {
 			// /<command> {rewardName} {powerlevel} r:{requirements yes/no} r1:{req1} r2:{req2} r3:{req3} r4:{req4} {commands}
-			if(args.length > 0)
+			if(args.length > 3)
 			{
 				String reward = args[0], powerlvl = args[1], 
 						req = args[2], none = "none";
