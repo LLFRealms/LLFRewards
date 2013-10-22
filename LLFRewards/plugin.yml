@@ -1,5 +1,6 @@
 name: LLFRewards
 author: L337Lobster
+website: http://dev.bukkit.org/bukkit-plugins/llfrewards/
 main: com.llfrealms.LLFRewards.LLFRewards
 database: true
 depend: [mcMMO]
