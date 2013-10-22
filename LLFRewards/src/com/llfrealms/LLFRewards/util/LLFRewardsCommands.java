@@ -30,11 +30,38 @@ public class LLFRewardsCommands implements CommandExecutor
 	    }
 		if(cmd.getName().equalsIgnoreCase("llfadd"))
 	    {
-			///<command> {name} {powerlevel} {commands} {requirements yes/no} {req1} {req2} {req3} {req4}
-			String reward = args[0];
-			String plvl = args[1];
-			String commands = args[2];
-			String req = args[3];
+			// /<command> {rewardName} {powerlevel} {commands} r:{requirements yes/no} r1:{req1} r2:{req2} r3:{req3} r4:{req4}
+			String reward = args[0], powerlvl = args[1], commands = args[2], 
+					req = args[3], none = "none";
+			String req1 = none, req2 = none, req3 = none, req4 = none;
+			String[] requirements, requirement1, requirement2, requirement3, requirement4;
+			requirements = req.split(":");
+			req = requirements[1];
+			if(req.equalsIgnoreCase("yes") || req.equalsIgnoreCase("true") )
+			{
+				if(args.length == 8)
+				{
+					requirement1 = args[4].split(":");
+					requirement2 = args[5].split(":");
+					requirement3 = args[6].split(":");
+					requirement4 = args[7].split(":");
+					req1 = requirement1[1];
+					req2 = requirement2[1];
+					req3 = requirement3[1];
+					req4 = requirement4[1];
+				}
+				else if(args.length < 8)
+				{
+					Utilities.sendMessage(sender, "&4Not enough arguments");
+				}else if(args.length > 8)
+				{
+					Utilities.sendMessage(sender, "&4Too many arguments");
+				}
+			}
+			else if(req.equalsIgnoreCase("no") || req.equalsIgnoreCase("true"))
+			{
+				
+			}
         	return true;
 	    }
         return false;
