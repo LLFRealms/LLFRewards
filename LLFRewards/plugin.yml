@@ -11,7 +11,7 @@ commands:
        usage: /<command>
     llfadd:
        description: add rewards to the config.
-       usage: /<command> {rewardName} {powerlevel} {commands} r:{requirements yes/no} r1:{req1} r2:{req2} r3:{req3} r4:{req4}
+       usage: /<command> {rewardName} {powerlevel} r:{requirements yes/no} r1:{req1} r2:{req2} r3:{req3} r4:{req4} {commands}
 permissions:
     jack.message:
         description: message!

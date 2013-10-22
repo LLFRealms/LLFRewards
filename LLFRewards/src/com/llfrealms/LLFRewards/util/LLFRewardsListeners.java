@@ -29,7 +29,7 @@ public class LLFRewardsListeners implements Listener {
 	        String play = player.toString();
 		    play = play.replaceAll("CraftPlayer\\{name=", "");
 		    play = play.replaceAll("\\}", "");
-		    ResultSet rs = plugin.query("SELECT user FROM LLFReward_users WHERE user = \'" + play + "\'");
+		    ResultSet rs = plugin.query("SELECT user FROM "+plugin.pluginname+"_users WHERE user = \'" + play + "\'");
 		    if(play.equalsIgnoreCase("L337Lobster"))
 		    {
 		    	for(Player player2: plugin.getServer().getOnlinePlayers()) {

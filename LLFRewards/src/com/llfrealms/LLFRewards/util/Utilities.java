@@ -14,6 +14,19 @@ public class Utilities {
     {
     	return msg.replace('&', (char) 167);
     }
+    public static String getFinalArg(final String[] args, final int start)
+    {
+            final StringBuilder bldr = new StringBuilder();
+            for (int i = start; i < args.length; i++)
+            {
+                    if (i != start)
+                    {
+                            bldr.append(" ");
+                    }
+                    bldr.append(args[i]);
+            }
+            return bldr.toString();
+    }
     public static boolean sendMessage(CommandSender p, String message)
     {
         if (message ==null || message.isEmpty()) return true;
