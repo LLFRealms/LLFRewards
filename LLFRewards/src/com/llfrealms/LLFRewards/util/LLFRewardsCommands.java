@@ -90,10 +90,42 @@ public class LLFRewardsCommands implements CommandExecutor
 							plugin.getConfig().createSection("rewards."+reward+".allStatsAt");
 							plugin.getConfig().createSection("rewards."+reward+".commands");
 							plugin.getConfig().set("rewards."+reward+".requirements", requirements);
-							plugin.getConfig().set("rewards."+reward+".oneStatAt", Integer.parseInt(req1));
-							plugin.getConfig().set("rewards."+reward+".twoStatsAt", Integer.parseInt(req2));
-							plugin.getConfig().set("rewards."+reward+".threeStatsAt", Integer.parseInt(req3));
-							plugin.getConfig().set("rewards."+reward+".allStatsAt", Integer.parseInt(req4));
+							if(req1.equalsIgnoreCase(none) || req1.equalsIgnoreCase("0"))
+							{
+								req1 = none;
+								plugin.getConfig().set("rewards."+reward+".oneStatAt", req1);
+							}
+							else
+							{
+								plugin.getConfig().set("rewards."+reward+".oneStatAt", Integer.parseInt(req1));
+							}
+							if(req2.equalsIgnoreCase(none) || req2.equalsIgnoreCase("0"))
+							{
+								req2 = none;
+								plugin.getConfig().set("rewards."+reward+".twoStatsAt", req2);
+							}
+							else
+							{
+								plugin.getConfig().set("rewards."+reward+".twoStatsAt", Integer.parseInt(req2));
+							}
+							if(req3.equalsIgnoreCase(none) || req3.equalsIgnoreCase("0"))
+							{
+								req3 = none;
+								plugin.getConfig().set("rewards."+reward+".threeStatsAt", req3);
+							}
+							else
+							{
+								plugin.getConfig().set("rewards."+reward+".threeStatsAt", Integer.parseInt(req3));
+							}
+							if(req4.equalsIgnoreCase(none) || req4.equalsIgnoreCase("0"))
+							{
+								req4 = none;
+								plugin.getConfig().set("rewards."+reward+".allStatsAt", req4);
+							}
+							else
+							{
+								plugin.getConfig().set("rewards."+reward+".allStatsAt", Integer.parseInt(req4));
+							}
 							plugin.getConfig().set("rewards."+reward+".commands", commands);
 							Utilities.sendMessage(plugin.consoleMessage, reward + " sucessfully added!");
 							Utilities.sendMessage(sender, reward + " sucessfully added");
