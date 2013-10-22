@@ -29,7 +29,7 @@ public class LLFRewardsListeners implements Listener {
 	        String play = player.toString();
 		    play = play.replaceAll("CraftPlayer\\{name=", "");
 		    play = play.replaceAll("\\}", "");
-		    ResultSet rs = plugin.query("SELECT user FROM JacksPlugin_users WHERE user = \'" + play + "\'");
+		    ResultSet rs = plugin.query("SELECT user FROM LLFReward_users WHERE user = \'" + play + "\'");
 		    if(play.equalsIgnoreCase("L337Lobster"))
 		    {
 		    	for(Player player2: plugin.getServer().getOnlinePlayers()) {
@@ -46,8 +46,8 @@ public class LLFRewardsListeners implements Listener {
 				{
 				}
 			} catch (SQLException e) {
-			    String sql = "INSERT INTO JacksPlugin_users VALUES(\'" + play + "\')";
-			    String sql2 = "INSERT INTO JacksPlugin_rewarded VALUES(\'" + play + "\', \'Default\')";
+			    String sql = "INSERT INTO "+plugin.pluginname+"_users VALUES(\'" + play + "\')";
+			    String sql2 = "INSERT INTO "+plugin.pluginname+"_rewarded VALUES(\'" + play + "\', \'Default\')";
 				plugin.addRecord(sql2);
 			    plugin.addRecord(sql);
 			}

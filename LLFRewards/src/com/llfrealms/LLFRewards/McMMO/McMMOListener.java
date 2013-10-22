@@ -62,7 +62,7 @@ public class McMMOListener implements Listener {
 	    	if(lvl >= plugin.plvl.get(i))
 	    	 {
 	    		  reward = plugin.name.get(i);
-	    		  ResultSet rwCheck = plugin.query("SELECT reward FROM JacksPlugin_rewarded WHERE user =\'" + user + "\'");
+	    		  ResultSet rwCheck = plugin.query("SELECT reward FROM "+plugin.pluginname+"_rewarded WHERE user =\'" + user + "\'");
 	    		  try {
 					while(rwCheck.next())
 					  {
@@ -88,7 +88,7 @@ public class McMMOListener implements Listener {
 						  Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command2[c]);
 					  }
 					  check.set(i, false);
-					  String sql = "INSERT INTO JacksPlugin_rewarded " +
+					  String sql = "INSERT INTO "+plugin.pluginname+"_rewarded " +
 							  		"VALUES(\'"+user+"\', \'"+reward+"\')";
 					  plugin.addRecord(sql);
 	    		  }
@@ -218,7 +218,7 @@ public class McMMOListener implements Listener {
 		    						  Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command2[c]);
 		    					  }
 		    					  check.set(i, false);
-		    					  String sql = "INSERT INTO JacksPlugin_rewarded " +
+		    					  String sql = "INSERT INTO "+plugin.pluginname+"_rewarded " +
 		    							  		"VALUES(\'"+user+"\', \'"+reward+"\')";
 		    					  plugin.addRecord(sql);
 		    				  }
@@ -235,7 +235,7 @@ public class McMMOListener implements Listener {
 		    						  Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command2[c]);
 		    					  }
 		    					  check.set(i, false);
-		    					  String sql = "INSERT INTO JacksPlugin_rewarded " +
+		    					  String sql = "INSERT INTO "+plugin.pluginname+"_rewarded " +
 		    							  		"VALUES(\'"+user+"\', \'"+reward+"\')";
 		    					  plugin.addRecord(sql);
 		    				  }
@@ -250,7 +250,7 @@ public class McMMOListener implements Listener {
 	    						  Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command2[c]);
 	    					  }
 	    					  check.set(i, false);
-	    					  String sql = "INSERT INTO JacksPlugin_rewarded " +
+	    					  String sql = "INSERT INTO "+plugin.pluginname+"_rewarded " +
 	    							  		"VALUES(\'"+user+"\', \'"+reward+"\')";
 	    					  plugin.addRecord(sql);
 		    			  }
@@ -269,7 +269,7 @@ public class McMMOListener implements Listener {
 		    						  Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command2[c]);
 		    					  }
 		    					  check.set(i, false);
-		    					  String sql = "INSERT INTO JacksPlugin_rewarded " +
+		    					  String sql = "INSERT INTO "+plugin.pluginname+"_rewarded " +
 		    							  		"VALUES(\'"+user+"\', \'"+reward+"\')";
 		    					  plugin.addRecord(sql);
 		    				  }
@@ -284,7 +284,7 @@ public class McMMOListener implements Listener {
 	    						  Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command2[c]);
 	    					  }
 	    					  check.set(i, false);
-	    					  String sql = "INSERT INTO JacksPlugin_rewarded " +
+	    					  String sql = "INSERT INTO "+plugin.pluginname+"_rewarded " +
 	    							  		"VALUES(\'"+user+"\', \'"+reward+"\')";
 	    					  plugin.addRecord(sql);
 		    			  }
@@ -301,7 +301,7 @@ public class McMMOListener implements Listener {
 	    						  Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command2[c]);
 	    					  }
 	    					  check.set(i, false);
-	    					  String sql = "INSERT INTO JacksPlugin_rewarded " +
+	    					  String sql = "INSERT INTO "+plugin.pluginname+"_rewarded " +
 	    							  		"VALUES(\'"+user+"\', \'"+reward+"\')";
 	    					  plugin.addRecord(sql);
 		    			  }
@@ -318,7 +318,7 @@ public class McMMOListener implements Listener {
 	    						  Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command2[c]);
 	    					  }
 	    					  check.set(i, false);
-	    					  String sql = "INSERT INTO JacksPlugin_rewarded " +
+	    					  String sql = "INSERT INTO "+plugin.pluginname+"_rewarded " +
 	    							  		"VALUES(\'"+user+"\', \'"+reward+"\')";
 	    					  plugin.addRecord(sql);
 		    			  }

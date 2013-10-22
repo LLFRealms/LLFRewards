@@ -7,10 +7,8 @@ import org.bukkit.entity.Player;
 
 import com.gmail.nossr50.api.ExperienceAPI;
 
-//import com.llfrealms.JacksPlugin.JacksPlugin;
 
 public class Utilities {
-	//private static JacksPlugin plugin; 
 	
     public static String colorChat(String msg) 
     {

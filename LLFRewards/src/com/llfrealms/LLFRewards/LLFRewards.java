@@ -42,6 +42,7 @@ public final class LLFRewards extends JavaPlugin
 	public ConsoleCommandSender consoleMessage = Bukkit.getConsoleSender();
 	public ArrayList<Integer> plvl = new ArrayList<Integer>();
 	public ArrayList<String> name = new ArrayList<String>();
+	public String pluginname = "LLFRewards";
 	public boolean isSkill = false;
 	
 	@Override
@@ -54,11 +55,9 @@ public final class LLFRewards extends JavaPlugin
         
     	Utilities.sendMessage(consoleMessage,"[LLFPlugin] &aWelcome Jack's first plugin! It totally sucks!!");
         
-        getCommand("destroy").setExecutor(new LLFRewardsCommands(this));
-        getCommand("check").setExecutor(new LLFRewardsCommands(this));
-        getCommand("lvl").setExecutor(new LLFRewardsCommands(this));
-        getCommand("jacksave").setExecutor(new LLFRewardsCommands(this));
-        getCommand("jackload").setExecutor(new LLFRewardsCommands(this));
+        getCommand("llfadd").setExecutor(new LLFRewardsCommands(this));
+        getCommand("llfload").setExecutor(new LLFRewardsCommands(this));
+        getCommand("llfsave").setExecutor(new LLFRewardsCommands(this));
         
         mcmmoRewardSetup();
         
@@ -76,7 +75,7 @@ public final class LLFRewards extends JavaPlugin
     @Override
     public void onDisable() 
     {
-        getLogger().info("Closing JacksPlugin");
+        getLogger().info("Closing "+pluginname);
     }
     public final Runnable OnTimeRunnable = new Runnable()
     {
@@ -89,10 +88,10 @@ public final class LLFRewards extends JavaPlugin
     public void tableCheck()
     {
     	Utilities.sendMessage(consoleMessage, "Making sure our table exists");
-    	String sql = "CREATE TABLE IF NOT EXISTS JacksPlugin_rewarded" +
+    	String sql = "CREATE TABLE IF NOT EXISTS "+pluginname+"_rewarded" +
     				 "(user varchar(255),"+
     				 "reward varchar(255))";
-    	String sql2 = "CREATE TABLE IF NOT EXISTS JacksPlugin_users" +
+    	String sql2 = "CREATE TABLE IF NOT EXISTS "+pluginname+"_users" +
 				 "(user varchar(255))";
     	try {
     		stmt = connection.createStatement();
@@ -207,7 +206,7 @@ public final class LLFRewards extends JavaPlugin
             connectionProperties.put("autoReconnect", "false");
             connectionProperties.put("maxReconnects", "0");
             connection = DriverManager.getConnection(connectionString, connectionProperties);
-            Utilities.sendMessage(consoleMessage,"[JacksPlugin] &aConnection to MySQL was a success!");
+            Utilities.sendMessage(consoleMessage,"["+pluginname+"] &aConnection to MySQL was a success!");
         }
         catch (SQLException ex) {
             connection = null;
