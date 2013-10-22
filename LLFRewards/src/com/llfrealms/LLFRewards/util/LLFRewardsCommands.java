@@ -36,29 +36,82 @@ public class LLFRewardsCommands implements CommandExecutor
 						req = args[2], none = "none";
 				Integer plvl = Integer.parseInt(powerlvl);
 				String req1 = none, req2 = none, req3 = none, req4 = none;
-				String[] requirements, requirement1, requirement2, requirement3, requirement4;
-				if(req.contains(":"))
+				String[]  temp, requirement1, requirement2, requirement3, requirement4;
+				boolean rewardExists = false, requirements = false;
+				for(int i = 0; i < plugin.name.size(); i++)
 				{
-					requirements = req.split(":");
-					req = requirements[1];
+					if(plugin.name.get(i).equalsIgnoreCase(reward))
+					{
+						rewardExists = true;
+					}
+				}
+				if(rewardExists)
+				{
+					Utilities.sendMessage(sender, reward + " already exists.");
+					return true;
 				}
 				else
 				{
-					return false;
-				}
-				if(req.equalsIgnoreCase("yes") || req.equalsIgnoreCase("true") )
-				{
-					if(args.length == 8)
+					if(req.contains(":"))
 					{
-						String commands = Utilities.getFinalArg(args, 7);
-						requirement1 = args[3].split(":");
-						requirement2 = args[4].split(":");
-						requirement3 = args[5].split(":");
-						requirement4 = args[6].split(":");
-						req1 = requirement1[1];
-						req2 = requirement2[1];
-						req3 = requirement3[1];
-						req4 = requirement4[1];
+						temp = req.split(":");
+						req = temp[1];
+					}
+					else
+					{
+						return false;
+					}
+					if(req.equalsIgnoreCase("yes"))
+					{
+						requirements = true;
+					}
+					if(requirements)
+					{
+						if(args.length >= 8)
+						{
+							String commands = Utilities.getFinalArg(args, 7);
+							requirement1 = args[3].split(":");
+							requirement2 = args[4].split(":");
+							requirement3 = args[5].split(":");
+							requirement4 = args[6].split(":");
+							req1 = requirement1[1];
+							req2 = requirement2[1];
+							req3 = requirement3[1];
+							req4 = requirement4[1];
+							plugin.plvl.add(plvl);
+							plugin.name.add(reward);
+							plugin.getConfig().set("rSetup.plvl", plugin.plvl);
+							plugin.getConfig().set("rSetup.name", plugin.name);
+							plugin.getConfig().createSection("rewards."+reward);
+							plugin.getConfig().createSection("rewards."+reward+".requirements");
+							plugin.getConfig().createSection("rewards."+reward+".oneStatAt");
+							plugin.getConfig().createSection("rewards."+reward+".twoStatsAt");
+							plugin.getConfig().createSection("rewards."+reward+".threeStatsAt");
+							plugin.getConfig().createSection("rewards."+reward+".allStatsAt");
+							plugin.getConfig().createSection("rewards."+reward+".commands");
+							plugin.getConfig().set("rewards."+reward+".requirements", requirements);
+							plugin.getConfig().set("rewards."+reward+".oneStatAt", Integer.parseInt(req1));
+							plugin.getConfig().set("rewards."+reward+".twoStatsAt", Integer.parseInt(req2));
+							plugin.getConfig().set("rewards."+reward+".threeStatsAt", Integer.parseInt(req3));
+							plugin.getConfig().set("rewards."+reward+".allStatsAt", Integer.parseInt(req4));
+							plugin.getConfig().set("rewards."+reward+".commands", commands);
+							Utilities.sendMessage(plugin.consoleMessage, reward + " sucessfully added!");
+							Utilities.sendMessage(sender, reward + " sucessfully added");
+							return true;
+						}
+						else if(args.length < 8)
+						{
+							Utilities.sendMessage(sender, "&4Not enough arguments");
+							return false;
+						}
+					}
+					else if(!requirements)
+					{
+						String commands = Utilities.getFinalArg(args, 3);
+						plugin.plvl.add(plvl);
+						plugin.name.add(reward);
+						plugin.getConfig().set("rSetup.plvl", plugin.plvl);
+						plugin.getConfig().set("rSetup.name", plugin.name);
 						plugin.getConfig().createSection("rewards."+reward);
 						plugin.getConfig().createSection("rewards."+reward+".requirements");
 						plugin.getConfig().createSection("rewards."+reward+".oneStatAt");
@@ -66,47 +119,20 @@ public class LLFRewardsCommands implements CommandExecutor
 						plugin.getConfig().createSection("rewards."+reward+".threeStatsAt");
 						plugin.getConfig().createSection("rewards."+reward+".allStatsAt");
 						plugin.getConfig().createSection("rewards."+reward+".commands");
-						plugin.getConfig().set("rewards."+reward+".requirements", req);
+						plugin.getConfig().set("rewards."+reward+".requirements", requirements);
 						plugin.getConfig().set("rewards."+reward+".oneStatAt", req1);
 						plugin.getConfig().set("rewards."+reward+".twoStatsAt", req2);
 						plugin.getConfig().set("rewards."+reward+".threeStatsAt", req3);
 						plugin.getConfig().set("rewards."+reward+".allStatsAt", req4);
 						plugin.getConfig().set("rewards."+reward+".commands", commands);
+						Utilities.sendMessage(plugin.consoleMessage, reward + " sucessfully added!");
+						Utilities.sendMessage(sender, reward + " sucessfully added");
+						return true;
 					}
-					else if(args.length < 8)
-					{
-						Utilities.sendMessage(sender, "&4Not enough arguments");
-						return false;
-					}else if(args.length > 8)
-					{
-						Utilities.sendMessage(sender, "&4Too many arguments");
-						return false;
-					}
+		        	return true;
 				}
-				else if(req.equalsIgnoreCase("no") || req.equalsIgnoreCase("false"))
-				{
-					String commands = Utilities.getFinalArg(args, 3);
-					plugin.plvl.add(plvl);
-					plugin.name.add(reward);
-					plugin.getConfig().set("rSetup.plvl", plugin.plvl);
-					plugin.getConfig().set("rSetup.name", plugin.name);
-					plugin.getConfig().createSection("rewards."+reward);
-					plugin.getConfig().createSection("rewards."+reward+".requirements");
-					plugin.getConfig().createSection("rewards."+reward+".oneStatAt");
-					plugin.getConfig().createSection("rewards."+reward+".twoStatsAt");
-					plugin.getConfig().createSection("rewards."+reward+".threeStatsAt");
-					plugin.getConfig().createSection("rewards."+reward+".allStatsAt");
-					plugin.getConfig().createSection("rewards."+reward+".commands");
-					plugin.getConfig().set("rewards."+reward+".requirements", req);
-					plugin.getConfig().set("rewards."+reward+".oneStatAt", req1);
-					plugin.getConfig().set("rewards."+reward+".twoStatsAt", req2);
-					plugin.getConfig().set("rewards."+reward+".threeStatsAt", req3);
-					plugin.getConfig().set("rewards."+reward+".allStatsAt", req4);
-					plugin.getConfig().set("rewards."+reward+".commands", commands);
-					
-				}
-	        	return true;
 			}
+				
 	    }
         return false;
     }

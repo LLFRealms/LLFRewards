@@ -210,7 +210,7 @@ public final class LLFRewards extends JavaPlugin
         }
         catch (SQLException ex) {
             connection = null;
-            getLogger().severe("Connection to MySQL failed!");
+            Utilities.sendMessage(consoleMessage, "&4[SEVERE] Connection to MySQL failed!");
             getLogger().info("SQLException: " + ex.getMessage());
         	getLogger().info("SQLState: " + ex.getSQLState());
         	getLogger().info("VendorError: " + ex.getErrorCode());
