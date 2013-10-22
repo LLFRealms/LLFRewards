@@ -1,7 +1,5 @@
 ######################################
-#                                    #
 #            MySql section           #
-#                                    #
 ######################################
 MySQL:
     database:
@@ -13,9 +11,7 @@ MySQL:
         port: 3306 # Your database's port number
         address: localhost # Your database's address (IP)
 ######################################
-#                                    #
 #        Rewards setup section       #
-#                                    #
 ######################################
 # plvl lines up to name, please keep it exact
 rSetup:
@@ -24,9 +20,7 @@ rSetup:
     name: 
         - example
 ######################################
-#                                    #
 #           Rewards section          #
-#                                    #
 ######################################
 # example
 #   rewardName:
