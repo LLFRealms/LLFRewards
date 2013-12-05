@@ -144,7 +144,6 @@ public class McMMOListener implements Listener {
 		    		  }
 	    			  if(!req4.equalsIgnoreCase(none))
 		    		  {
-	    				  message(plugin.consoleMessage, "checking levels for req 4");
 		    			  for(int k = 0; k < skills.length; k++)
 		    			  {
 	    					  if(levels[k] >= lvl4)
@@ -183,7 +182,6 @@ public class McMMOListener implements Listener {
 		    				  {
 		    					  for(int y = 0; y < skills.length; y++)
 		    					  {
-		    						  message(plugin.consoleMessage, "Checking: " + skills[k] + ":" + levels[k] + " " + skills[x] + ":" + levels[x] + " " + skills[y] + ":" + levels[y]);
 		    						  if(k != x && k != y && x != y)
 		    						  {
 		    						  if(levels[k] >= lvl3 && levels[x] >= lvl3 && levels[y] >= lvl3)
